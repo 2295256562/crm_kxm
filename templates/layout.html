@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.3.7/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="icon" href="{% static 'imgs/layout/CRM (2).png' %}">
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.css' %}">
+    <title>CRM管理系统</title>
+</head>
+<body>
+{% csrf_token %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="{% static 'imgs/layout/CRM (1).svg' %} " alt="" height="55px" width="55px" align="left">
+            <a class="navbar-brand" href="#">管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <div class="navbar-right">
+                <img class="img-circle" height="45px" style="margin-top: 2.5px;margin-right: 3.5px;margin-left: 2.5px" src="{% static 'imgs/头像.svg' %}" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <ul class="dropdown-menu">
+                    <li><a href="#">个人中心</a></li>
+                    <li><a href="#">修改密码</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">注销</a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">任务 <i class="fa fa-bell-o" aria-hidden="true"></i>&nbsp;<span class="badge">4</span></a>
+                </li>
+                <li><a href="#">通知 <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;<span class="badge">4</span></a>
+                </li>
+                <li><a href="#">消息 <i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp;<span
+                        class="badge">4</span></a></li>
+            </ul>
+{#            <form class="navbar-form navbar-right">#}
+{#                <input type="text" class="form-control" placeholder="搜索">#}
+{#            </form>#}
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="{% url 'custmoer' %}">客户列表</a></li>
+                <li><a href="{% url 'my_customer' %}">我的客户</a></li>
+                <li><a href="{% url 'consult_record' 0 %}">我的跟进记录</a></li>
+                <li><a href="{% url 'enrollment'  0%}">报名记录</a></li>
+                <li><a href="{% url 'class_list'  %}">班级列表</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Export</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/jQuery.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.3.7/dist/js/bootstrap.js' %}"></script>
+{% block js %}
+
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+</body>
+</html>
